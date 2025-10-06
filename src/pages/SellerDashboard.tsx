@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
 import Logo from '@/components/Logo';
-import { LogOut, Plus, Trash2, Store } from 'lucide-react';
+import { LogOut, Plus, Trash2, Store, Home } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const productSchema = z.object({
@@ -78,7 +78,11 @@ const SellerDashboard = () => {
               <p className="text-sm text-muted-foreground">Grow your business</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+              <Home className="h-4 w-4" />
+              <span className="hidden sm:inline">Home</span>
+            </Button>
             <div className="text-right hidden sm:block">
               <p className="text-sm font-medium">{user?.name}</p>
               <Badge className="text-xs bg-gradient-to-r from-secondary to-accent">Seller</Badge>
