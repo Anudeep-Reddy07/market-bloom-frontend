@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const API_URL = 'http://localhost:5000/api';
 
@@ -52,15 +53,34 @@ export interface AuthResponse {
   };
 }
 
+interface JWTPayload {
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    userType: 'buyer' | 'seller';
+  };
+}
+
 export const authAPI = {
   signup: async (data: SignupData): Promise<AuthResponse> => {
     const response = await api.post('/auth/signup', data);
-    return response.data;
+    const token = response.data.token;
+    const decoded = jwtDecode<JWTPayload>(token);
+    return {
+      token,
+      user: decoded.user,
+    };
   },
   
   login: async (data: LoginData): Promise<AuthResponse> => {
     const response = await api.post('/auth/login', data);
-    return response.data;
+    const token = response.data.token;
+    const decoded = jwtDecode<JWTPayload>(token);
+    return {
+      token,
+      user: decoded.user,
+    };
   },
 };
 
