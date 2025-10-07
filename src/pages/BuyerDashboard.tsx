@@ -78,7 +78,7 @@ const BuyerDashboard = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <Button variant="ghost" size="sm" onClick={() => navigate('/home')}>
               <Home className="h-4 w-4" />
               <span className="hidden sm:inline">Home</span>
             </Button>

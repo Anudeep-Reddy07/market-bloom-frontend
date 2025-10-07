@@ -79,9 +79,13 @@ const SellerDashboard = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" onClick={() => navigate('/')}>
+            <Button variant="ghost" size="sm" onClick={() => navigate('/home')}>
               <Home className="h-4 w-4" />
               <span className="hidden sm:inline">Home</span>
+            </Button>
+            <Button variant="ghost" size="sm" onClick={() => navigate('/shop-management')}>
+              <Store className="h-4 w-4" />
+              <span className="hidden sm:inline">Manage Shop</span>
             </Button>
             <div className="text-right hidden sm:block">
               <p className="text-sm font-medium">{user?.name}</p>
